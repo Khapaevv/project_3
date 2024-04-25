@@ -1,3 +1,5 @@
 import json
-file = open("/Users/mac/Desktop/Kursovaya_3/operations.json")
-json.load(file)
+
+def load_operations():
+    with open('operations.json', ) as f:
+        return json.load(f)
