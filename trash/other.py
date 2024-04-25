@@ -2,7 +2,7 @@ import json
 
 
 def load_operations():
-    with open('operations.json', ) as f:
+    with open('../operations.json', ) as f:
         return json.load(f)
 
 print(load_operations())
