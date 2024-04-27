@@ -17,26 +17,68 @@ def executed_operations():
 
     return list_operation_exe
 
-def sort_5_last_date():
+def sort_date():
     """сортируем по дате и выводим последние 5 операций"""
     sorted_data = sorted(executed_operations(), key=lambda x: x['date'], reverse=True)
 
-    return sorted_data[:5]
+    return sorted_data
 
-print(sort_5_last_date())
+# print(sort_5_last_date())
 # def main():
 #     """основной код"""
-s = sort_5_last_date()
-date_0 = []
-date_0 = s[0]['date'].split("T")
-date = []
+s = sort_date()
+# print(s)
+
+
+
+def main():
+    """нужно сделать скрытые счета, убать ноне из кому и все объеденить и потом тесты сделать"""
+    for i in range(5):
+        print(s[i])
+        date_0 = []
+        date_0 = s[i]['date'].split("T")
+        # print(date_0)
+        date = []
+        # print(date_0[0].split("-"))
+        date = ".".join(date_0[0].split("-")[::-1])
+        print(date)
+        description = []
+        description = s[i].get('description')
+        print(description)
+        from_ = []
+        from_ = s[i].get("from")
+        # if from_ == None:
+        #     break
+        # else:
+        #     return from_
+        print(from_)
+        to = s[i].get("to")
+        print(to)
+        operationAmount_a = []
+        operationAmount = s[i].get('operationAmount')
+        # operationAmount_a = operationAmount.split(",")
+        values = list(operationAmount.values())
+        amount = values[0]
+        currency = values[1]
+        currency_values = list(currency.values())[0]
+        # operationAmount_c = s[i].get('operationAmount')[1]
+        # print(operationAmount)
+        # print(values)
+        print(amount)
+        # print(currency)
+        print(currency_values)
+
+
+        # print({date}{description}{from_}{to})
+print(main())
+    # print(date_0[0].strftime( % d - % m - %Y))
+# date = []
 # date = date_0.split("-")
-print(s[0]['date'].split("T"))
-print(date_0[0:1],date_0[1])
-print(sort_5_last_date()[4]['date'])
+# print(s[0]['date'].split("T"))
+# print(date_0[0:1],date_0[1])
+# print(sort_5_last_date()[4]['date'])
     # Пример вывода для одной операции:
-    # 14.10
-    # .2018
+    # 14.10 .2018
     # Перевод
     # организации
     # Visa
