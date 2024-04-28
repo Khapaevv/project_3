@@ -1,4 +1,6 @@
 import json
+from functions import get_from_
+
 
 
 def load_operations():
@@ -45,15 +47,34 @@ def main():
         description = []
         description = s[i].get('description')
         print(description)
-        from_ = []
-        from_ = s[i].get("from")
+        # if get_from_(i) != None:
+        from_ = get_from_(i)
+        # new_f = []
+        # if from_ != None:
+        #     new_f = from_[:-12] + "******" + from_[-6:]
+        #     return new_f
+        # else:
+        #     continue
+
+        # new_s = from_[:-10] +"******" + from_[:-5]
+        # # from_1 = []
+        # from_ = s[i].get("from")
+        #
         # if from_ == None:
-        #     break
+        #     continue
         # else:
         #     return from_
+        # from_1 = list(from_)
         print(from_)
+        # print(new_f)
+        # print(from_1)
+        # print(new_s)
         to = s[i].get("to")
-        print(to)
+        new_s = to[-12:-6]
+        new_d = to[:-12]+"******"+to[-6:]
+        # print(to)
+        # print(new_s)
+        print(new_d)
         operationAmount_a = []
         operationAmount = s[i].get('operationAmount')
         # operationAmount_a = operationAmount.split(",")

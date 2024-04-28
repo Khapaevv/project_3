@@ -1,3 +1,38 @@
+import json
+
+
+def load_operations():
+    """вытаскиваем из json"""
+    with open('operations.json', ) as f:
+        return json.load(f)
+
+
+list_operation = []
+list_operation_exe = []
+
+
+def executed_operations():
+    """выбираем только "EXECUTED" и складывем в отдельный список"""
+    for operation in load_operations():
+        if operation.get("state") == "EXECUTED":
+            list_operation_exe.append(operation)
+
+    return list_operation_exe
+
+
+def sort_date():
+    """сортируем по дате и выводим последние 5 операций"""
+    sorted_data = sorted(executed_operations(), key=lambda x: x['date'], reverse=True)
+
+    return sorted_data
+
+
+# print(sort_5_last_date())
+# def main():
+#     """основной код"""
+s = sort_date()
+
+
 def get_date(i):
     date_0 = s[i]['date'].split("T")
     date = ".".join(date_0[0].split("-")[::-1])
@@ -11,13 +46,20 @@ def get_description(i):
 
 def get_from_(i):
     from_ = s[i].get("from")
-    if from_ != None:
-        return from_
+    # new_s = from_[-10:] + '******' + from_[-5:]
+
+    # if from_ == None:
+    #     continue
+    # else:
+    #     from_w = from_[-10:-5]
+    return from_
+
 
 
 def get_to(i):
     to = s[i].get("to")
-    return to
+    to_stars = to[:-12] + "******" + to[-6:]
+    return to_stars
 
 
 def get_amount(i):
