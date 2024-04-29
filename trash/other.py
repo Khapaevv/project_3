@@ -1,5 +1,5 @@
 import json
-from functions import get_from_
+from src.functions import get_from_
 
 
 
@@ -31,7 +31,7 @@ def sort_date():
 s = sort_date()
 # print(s)
 
-
+i = 5
 
 def main():
     """нужно сделать скрытые счета, убать ноне из кому и все объеденить и потом тесты сделать"""

@@ -3,7 +3,7 @@ import json
 
 def load_operations():
     """вытаскиваем из json"""
-    with open('operations.json', ) as f:
+    with open('../trash/operations.json', ) as f:
         return json.load(f)
 
 
@@ -50,14 +50,15 @@ def get_from_(i):
     """получаем от кого и заменяем звездочками"""
     from_ = s[i].get("from")
     from_stars = from_[:-12] + '******' + from_[-6:]
+    # from_stars = str(from_[:-12] + '******' + from_[-6:])
 
     # if from_ == None:
     #     continue
     # else:
     #     from_w = from_[-10:-5]
     return from_stars
-
-
+# get_from_(3)
+# print(get_from_(3))
 
 def get_to(i):
     """получаем кому и заменяем звездочками"""
