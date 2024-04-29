@@ -26,10 +26,6 @@ def sort_date():
 
     return sorted_data
 
-
-# print(sort_5_last_date())
-# def main():
-#     """основной код"""
 s = sort_date()
 
 
@@ -58,11 +54,8 @@ def get_from_(i):
         else:
             from_stars = (from_[:4] + ' **' + from_[-4:])
 
-
     return from_stars
-    # return from_stars
-# get_from_(i)
-# print(get_from_(3))
+
 
 def get_to(i):
     """получаем кому и заменяем звездочками"""
