@@ -23,3 +23,8 @@ def sort_date():
     return sorted_data
 
 s = sort_date()
+def main():
+    if get_from_(i) != None:
+        print(f"{get_date(i)} {get_description(i)} \{get_from_(i)} -> {get_to(i)} \{get_amount(i)} {get_currency(i)}")
+    else:
+        print(f"{get_date(i)} {get_description(i)} \-> {get_to(i)} \{get_amount(i)} {get_currency(i)}")

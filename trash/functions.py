@@ -34,35 +34,40 @@ s = sort_date()
 
 
 def get_date(i):
+    """получаем дату"""
     date_0 = s[i]['date'].split("T")
     date = ".".join(date_0[0].split("-")[::-1])
     return date
 
 
 def get_description(i):
+    """получаем вид операции"""
     description = s[i].get('description')
     return description
 
 
 def get_from_(i):
+    """получаем от кого и заменяем звездочками"""
     from_ = s[i].get("from")
-    # new_s = from_[-10:] + '******' + from_[-5:]
+    from_stars = from_[:-12] + '******' + from_[-6:]
 
     # if from_ == None:
     #     continue
     # else:
     #     from_w = from_[-10:-5]
-    return from_
+    return from_stars
 
 
 
 def get_to(i):
+    """получаем кому и заменяем звездочками"""
     to = s[i].get("to")
     to_stars = to[:-12] + "******" + to[-6:]
     return to_stars
 
 
 def get_amount(i):
+    """получаем сумму"""
     operationAmount = s[i].get('operationAmount')
     values = list(operationAmount.values())
     amount = values[0]
@@ -70,6 +75,7 @@ def get_amount(i):
 
 
 def get_currency(i):
+    """получаем название валюты"""
     operationAmount = s[i].get('operationAmount')
     values = list(operationAmount.values())
     currency = values[1]
