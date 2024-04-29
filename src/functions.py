@@ -50,13 +50,14 @@ def get_from_(i):
     """получаем от кого и заменяем звездочками"""
     from_ = s[i].get("from")
     from_stars = []
-    # if from_[-17:-16] == " ":
-    #     from_stars = (from_[-16:-13] + ' ' + from_[-12:-11] + '** **** ' + from_[-4:])
-    #
-    #     from_stars = "kard"
-    # else:
-    #     from_stars = ('**' + from_[-4:])
-    #     from_stars = "schet"
+    if from_ == None:
+        return
+    else:
+        if from_[-17:-16] == " ":
+            from_stars = (from_[:-17] + " " + from_[-16:-12] + ' ' + from_[-13:-11] + '** **** ' + from_[-4:])
+        else:
+            from_stars = (from_[:4] + ' **' + from_[-4:])
+
 
     return from_stars
     # return from_stars
