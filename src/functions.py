@@ -2,7 +2,7 @@ import json
 
 
 def load_operations():
-    """вытаскиваем из json"""
+    """открываем json"""
     with open('../trash/operations.json', ) as f:
         return json.load(f)
 
@@ -21,7 +21,7 @@ def executed_operations():
 
 
 def sort_date():
-    """сортируем по дате и выводим последние 5 операций"""
+    """сортируем по дате"""
     sorted_data = sorted(executed_operations(), key=lambda x: x['date'], reverse=True)
 
     return sorted_data
@@ -50,7 +50,7 @@ def get_from_(i):
         return
     else:
         if from_[-17:-16] == " ":
-            from_stars = (from_[:-17] + " " + from_[-16:-12] + ' ' + from_[-13:-11] + '** **** ' + from_[-4:])
+            from_stars = (from_[:-17] + " " + from_[-16:-12] + ' ' + from_[-12:-10] + '** **** ' + from_[-4:])
         else:
             from_stars = (from_[:4] + ' **' + from_[-4:])
 
@@ -62,7 +62,7 @@ def get_to(i):
     to = s[i].get("to")
     to_ = []
     if to[-17:-16] == " ":
-        to_ = (to[:-17] + " " + to[-16:-12] + ' ' + to[-13:-11] + '** **** ' + to[-4:])
+        to_ = (to[:-17] + " " + to[-16:-12] + ' ' + to[-12:-10] + '** **** ' + to[-4:])
     else:
         to_ = (to[:4] + ' **' + to[-4:])
     return to_
@@ -77,7 +77,7 @@ def get_amount(i):
 
 
 def get_currency(i):
-    """получаем название валюты"""
+    """получаем наименование валюты"""
     operationAmount = s[i].get('operationAmount')
     values = list(operationAmount.values())
     currency = values[1]
