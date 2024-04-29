@@ -230,5 +230,28 @@ print(main())
 #             return student
 
 
+def load_operations():
+    """открываем json"""
+    with open('src/operations.json', ) as f:
+        return json.load(f)
+
+
+def executed_operations(operations):
+    """выбираем только "EXECUTED" и складывем в отдельный список"""
+    list_operation_exe = []
+    for operation in operations:
+        if operation.get("state") == "EXECUTED":
+            list_operation_exe.append(operation)
+
+    return list_operation_exe
+
+
+def sort_date(operations):
+    """сортируем по дате"""
+    sorted_data = sorted(operations, key=lambda x: x['date'], reverse=True)
+
+    return sorted_data
+
+
 
 

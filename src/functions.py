@@ -3,49 +3,43 @@ import json
 
 def load_operations():
     """открываем json"""
-    with open('../trash/operations.json', ) as f:
+    with open('operations.json') as f:
         return json.load(f)
 
 
-list_operation = []
-list_operation_exe = []
-
-
-def executed_operations():
+def executed_operations(operations):
     """выбираем только "EXECUTED" и складывем в отдельный список"""
-    for operation in load_operations():
+    list_operation_exe = []
+    for operation in operations:
         if operation.get("state") == "EXECUTED":
             list_operation_exe.append(operation)
 
     return list_operation_exe
 
 
-def sort_date():
+def sort_date(operations):
     """сортируем по дате"""
-    sorted_data = sorted(executed_operations(), key=lambda x: x['date'], reverse=True)
+    sorted_data = sorted(operations, key=lambda x: x['date'], reverse=True)
 
     return sorted_data
 
-s = sort_date()
 
-
-def get_date(i):
+def get_date(operation):
     """получаем дату"""
-    date_0 = s[i]['date'].split("T")
+    date_0 = operation['date'].split("T")
     date = ".".join(date_0[0].split("-")[::-1])
     return date
 
 
-def get_description(i):
+def get_description(operation):
     """получаем вид операции"""
-    description = s[i].get('description')
+    description = operation.get('description')
     return description
 
 
-def get_from_(i):
+def get_from_(operation):
     """получаем от кого и заменяем звездочками"""
-    from_ = s[i].get("from")
-    from_stars = []
+    from_ = operation.get("from")
     if from_ == None:
         return
     else:
@@ -57,10 +51,9 @@ def get_from_(i):
     return from_stars
 
 
-def get_to(i):
+def get_to(operation):
     """получаем кому и заменяем звездочками"""
-    to = s[i].get("to")
-    to_ = []
+    to = operation.get("to")
     if to[-17:-16] == " ":
         to_ = (to[:-17] + " " + to[-16:-12] + ' ' + to[-12:-10] + '** **** ' + to[-4:])
     else:
@@ -68,18 +61,20 @@ def get_to(i):
     return to_
 
 
-def get_amount(i):
+def get_amount(operation):
     """получаем сумму"""
-    operationAmount = s[i].get('operationAmount')
-    values = list(operationAmount.values())
-    amount = values[0]
-    return amount
+    return operation['operationAmount']['amount']
+    # operation_amount = operation.get('operationAmount')
+    # values = list(operation_amount.values())
+    # amount = values[0]
+    # return amount
 
 
-def get_currency(i):
+def get_currency(operation):
     """получаем наименование валюты"""
-    operationAmount = s[i].get('operationAmount')
-    values = list(operationAmount.values())
-    currency = values[1]
-    currency_values = list(currency.values())[0]
-    return currency_values
+    return operation['operationAmount']["currency"]["name"]
+    # operationAmount = operation.get('operationAmount')
+    # values = list(operationAmount.values())
+    # currency = values[1]
+    # currency_values = list(currency.values())[0]
+    # return currency_values
