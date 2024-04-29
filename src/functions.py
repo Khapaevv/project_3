@@ -49,22 +49,29 @@ def get_description(i):
 def get_from_(i):
     """получаем от кого и заменяем звездочками"""
     from_ = s[i].get("from")
-    from_stars = from_[:-12] + '******' + from_[-6:]
-    # from_stars = str(from_[:-12] + '******' + from_[-6:])
-
-    # if from_ == None:
-    #     continue
+    from_stars = []
+    # if from_[-17:-16] == " ":
+    #     from_stars = (from_[-16:-13] + ' ' + from_[-12:-11] + '** **** ' + from_[-4:])
+    #
+    #     from_stars = "kard"
     # else:
-    #     from_w = from_[-10:-5]
+    #     from_stars = ('**' + from_[-4:])
+    #     from_stars = "schet"
+
     return from_stars
-# get_from_(3)
+    # return from_stars
+# get_from_(i)
 # print(get_from_(3))
 
 def get_to(i):
     """получаем кому и заменяем звездочками"""
     to = s[i].get("to")
-    to_stars = to[:-12] + "******" + to[-6:]
-    return to_stars
+    to_ = []
+    if to[-17:-16] == " ":
+        to_ = (to[:-17] + " " + to[-16:-12] + ' ' + to[-13:-11] + '** **** ' + to[-4:])
+    else:
+        to_ = (to[:4] + ' **' + to[-4:])
+    return to_
 
 
 def get_amount(i):

@@ -47,8 +47,42 @@ def main():
         description = []
         description = s[i].get('description')
         print(description)
+        # from_stars = []
+        from_ = s[3].get("from")
+        print(from_)
+        # print(from_[-4:])
+        # print(from_[:4])
+        # print(from_[4:6])
+        # print(from_[-16:-12])
+        # print(from_[-12:-10])
+        # print(from_[-17:-16])
+        # print(from_[:-17])
+        if from_ == None:
+           # from_stars = "gecnj"
+           from_stars = "nothing"
+        else:
+           if from_[-17:-16] == " ":
+               from_stars = (from_[:-17] + from_[-16:-12] + ' ' + from_[-12:-10] + '** **** ' + from_[-4:])
+               from_stars = "kard"
+           else:
+               from_stars = (from_[:-21] + '**' + from_[-4:])
+               from_stars = "schet"
+        print(from_stars)
+        # if from_ == None:
+        #     from_stars = "gecnj"
+        # else:
+        #     if len(from_) == 16:
+        #         from_stars.append(from_[:4] + ' ' + from_[4:6] + '** **** ' + from_[-4:])
+        #     else:
+        #         from_stars.append('**' + from_[-4:])
+        #         from_stars = ' '.join(from_stars)
+        #     return from_stars
+
+
+        #
+        # print(from_stars)
         # if get_from_(i) != None:
-        from_ = get_from_(i)
+        # from_ = get_from_(i)
         # new_f = []
         # if from_ != None:
         #     new_f = from_[:-12] + "******" + from_[-6:]
@@ -65,16 +99,24 @@ def main():
         # else:
         #     return from_
         # from_1 = list(from_)
-        print(from_)
+        # print(from_)
         # print(new_f)
         # print(from_1)
         # print(new_s)
         to = s[i].get("to")
-        new_s = to[-12:-6]
-        new_d = to[:-12]+"******"+to[-6:]
+        to_ = []
+        print(to)
+        if len(to) == 16:
+            to_.append(to[:4] + ' ' + to[4:6] + '** **** ' + to[-4:])
+        else:
+            to_.append('**' + to[-4:])
+        to_ = ' '.join(to_)
+        # new_s = to[-12:-6]
+        # new_d = to[:-12]+"******"+to[-6:]
         # print(to)
         # print(new_s)
-        print(new_d)
+        # print(new_d)
+        print(to_)
         operationAmount_a = []
         operationAmount = s[i].get('operationAmount')
         # operationAmount_a = operationAmount.split(",")
