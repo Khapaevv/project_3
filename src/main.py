@@ -1,13 +1,8 @@
 import json
-from functions import load_operations
-from functions import executed_operations
-from functions import sort_date
-from functions import get_date
-from functions import get_description
-from functions import get_to
-from functions import get_from_
-from functions import get_amount
-from functions import get_currency
+from functions import (load_operations,
+                       executed_operations,
+                       sort_date, get_date, get_description,
+                       get_to, get_from_, get_amount, get_currency)
 
 def main():
     # list_total = load_operations()
